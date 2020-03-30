@@ -39,6 +39,16 @@ public class SkeletorBehaviour : MonoBehaviour
             if (!isFalling)
             {
                 velocityY = 0;
+
+                if (Input.GetKey(KeyCode.Mouse0))
+                {
+                    Attack();
+                } else
+                {
+                    anim.SetInteger("attack", 0);
+
+                }
+
                 MovePlayer();
             }
             else
@@ -86,6 +96,11 @@ public class SkeletorBehaviour : MonoBehaviour
         {
             anim.SetInteger("walk", 1);
             currentSpeed = 2f;
+
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                Attack();
+            }
         }
         else if (Input.GetKey(KeyCode.S))
         {
@@ -105,5 +120,9 @@ public class SkeletorBehaviour : MonoBehaviour
             Jump();
         }
     }
-
+    private void Attack()
+    {
+        anim.SetInteger("attack", 1);
+              
+    }
 }
